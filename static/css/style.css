@@ -33,21 +33,23 @@ body {
 
 .header-intro {
     max-width: 800px;
-    margin: 3rem auto;
+    margin: 2rem auto;
     color: #cbd5e1;
 }
 
 h1 {
     margin-bottom: 2rem;
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .lide {
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
-p {
+header p {
     margin: 1rem;
+    font-size: 1.1rem;
 }
 
 /* Container do formulário */
@@ -162,6 +164,7 @@ p {
 .scroll-indicator {
     text-align: center;
     padding: 1rem;
+    font-size: 1.8rem;
     animation: bounce 2s infinite;
 }
 
@@ -242,7 +245,7 @@ p {
 
 /* Container interno para alinhar com o conteúdo principal */
 .container-pe > * {
-    width: 75%;
+    width: 65%;
     max-width: 1200px;
     margin: 0 auto;
     color: #1e293b;
@@ -252,7 +255,7 @@ p {
 .container-pe p {
     margin: 1.5rem 0;
     line-height: 1.8;
-    font-size: 1.125rem;
+    font-size: 1.1rem;
 }
 
 /* Responsividade */
