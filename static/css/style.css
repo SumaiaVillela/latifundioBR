@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #00796b; /* slate-800 */
+    color: #f8fafc; /* slate-50 */
+    line-height: 1.6;
+    overflow-x: hidden
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10rem 0 3rem 0;
+}
+
+.header-intro {
+    max-width: 800px;
+    margin: 3rem auto;
+    color: #cbd5e1; /* slate-300 */
+}
+
+h1 {
+    margin-bottom: 2rem;
+    font-size: 3rem;
+}
+
+.lide {
+    font-weight: bold;
+}
+
+p {
+    margin: 1rem;
+}
+
+/* Container do formulário */
+.formulario-custom {
+    max-width: 800px;  /* Largura máxima do formulário */
+    margin: 20px auto; /* Centraliza na página e dá espaçamento vertical */
+    padding: 0 20px;   /* Padding para não colar nas bordas em telas pequenas */
+    display: flex;     /* Permite alinhar itens na horizontal */
+    gap: 10px;        /* Espaço entre o input e o botão */
+    align-items: flex-start; /* Alinha itens no topo */
+}
+
+/* Container do campo de endereço */
+.campo-form {
+    position: relative; /* Para o dropdown de sugestões */
+    flex-grow: 1;      /* Ocupa o espaço disponível */
+    min-width: 0;      /* Permite que o flex-grow funcione corretamente */
+}
+
+/* Campo de entrada do endereço */
+.input-endereco {
+    width: 100%;
+    padding: 10px 15px;  /* Espaçamento interno */
+    border: 2px solid #e0e0e0;  /* Cor da borda - CUSTOMIZÁVEL */
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;  /* Cor de fundo - CUSTOMIZÁVEL */
+    color: #333;             /* Cor do texto - CUSTOMIZÁVEL */
+}
+
+.input-endereco:focus {
+    outline: none;
+    border-color: #2196f3;  /* Cor da borda ao focar - CUSTOMIZÁVEL */
+}
+
+/* Botão de enviar */
+.botao-enviar {
+    padding: 10px 20px;  /* Mesmo padding vertical do input para alinhar */
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    white-space: nowrap;  /* Evita quebra de texto */
+    background-color: #c39903;  /* Cor de fundo - CUSTOMIZÁVEL */
+    color: white;            /* Cor do texto - CUSTOMIZÁVEL */
+    transition: background-color 0.3s;  /* Suaviza a mudança de cor */
+}
+
+.botao-enviar:hover {
+    background-color: #a4a5a5;  /* Cor ao passar o mouse - CUSTOMIZÁVEL */
+}
+
+/* Lista de sugestões */
+.sugestoes-endereco {
+    position: absolute;
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    background: white;          /* Cor de fundo - CUSTOMIZÁVEL */
+    border: 1px solid #ccc;     /* Cor da borda - CUSTOMIZÁVEL */
+    border-radius: 4px;
+    margin-top: 5px;
+    padding: 0;
+    list-style: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.sugestoes-endereco li {
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;               /* Cor do texto - CUSTOMIZÁVEL */
+}
+
+.sugestoes-endereco li:hover {
+    background-color: #f5f5f5;  /* Cor de fundo ao passar mouse - CUSTOMIZÁVEL */
+}
+
+/* Mensagens de erro e sucesso */
+.mensagem-erro {
+    color: rgb(246, 69, 69);            /* Cor do texto de erro - CUSTOMIZÁVEL */
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+.mensagem-sucesso {
+    color: rgb(113, 251, 168);            /* Cor do texto de sucesso - CUSTOMIZÁVEL */
+    font-size: 16px;
+    margin-top: 15px;
+    text-align: center;        /* Centraliza a mensagem */
+    display: none;
+}
+
+/* Media query para telas menores */
+@media (max-width: 600px) {
+    .formulario-custom {
+        flex-direction: column;  /* Empilha os elementos em telas pequenas */
+        gap: 15px;              /* Aumenta o espaço entre os elementos */
+    }
+    
+    .botao-enviar {
+        width: 100%;            /* Botão ocupa largura total */
+    }
+}
+
+
+.scroll-indicator {
+    text-align: center;
+    padding: 1rem;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+}
+
+.link-autor {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.link-autor:hover {
+    color: #94a3b8; /* slate-400 */
+}
+
+
+/* Controle da imagem */
+.section-image {
+    max-width: auto; /* Tamanho inicial da imagem */
+    height: 12cm; 
+    position: absolute; /* Começa no fluxo normal */
+    top: 140%; /* Inicialmente fora da tela */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    transition: top 0.2s ease, opacity 0.2s ease; /* Transição suave para a posição e visibilidade */
+}
+
+.layer-image {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Quando a imagem se fixa */
+.section-image.fixed {
+    position: fixed; /* Fixa a imagem no centro da tela */
+    top: 50%;
+}
+
+
+.sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.layer-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;  /* Maior que o z-index das figures de fundo */
+    pointer-events: none;  /* Permite clicar através das camadas */
+}
+
+.steps {
+    position:relative;
+}
+
+/* Seções */
+.step {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    height: 100svh;
+    position: relative;
+    z-index: 10;
+}
+
+.text-box {
+    backdrop-filter: blur(8px);
+    color: whitesmoke;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.375rem;
+    padding: 1.5rem;
+    max-width: 42rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    font-size: 1.2rem;
+}
+
+[data-secao^="grafico"] .text-box {
+    color: #00796b;
+}
+
+.scroll-section.active .text-box {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.layer1-image {
+    transition: opacity 0.3s ease, top 0.3s ease;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.layer2-image {
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.form {
+    height: 50vh;
+    width: 100%;
+    position: relative;
+    background-color: whitesmoke;
+}
+
+#map {
+    position: absolute;
+    inset: 0;
+  }
+
+/* Container principal do texto do rodapé */
+.container-pe {
+    width: 100%;
+    background-color: #e0e3e6;
+    padding: 4rem 0;
+    margin-top: 4rem;
+    box-shadow: 0 -1px 3px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container interno para alinhar com o conteúdo principal */
+.container-pe > * {
+    width: 75%;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #1e293b;
+    text-align: left;
+}
+
+/* Estilização dos parágrafos */
+.container-pe p {
+    margin: 1.5rem 0;
+    line-height: 1.8;
+    font-size: 1.125rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container-pe {
+        padding: 3rem 1rem;
+    }
+    
+    .container-pe > * {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-pe {
+        padding: 2rem 1rem;
+    }
+    
+    .container-pe > * {
+        width: 95%;
+    }
+    
+    .container-pe p {
+        font-size: 1rem;
+    }
+}
+
+.footer {
+    width: 100%;
+    background-color: #00796b; /* Same as body background */
+    color: #f8fafc; /* Same as body text color */
+    padding: 2rem 0;
+    text-align: center;
+    font-size: 0.875rem; /* Small text */
+    line-height: 1.6;
+}
+
+.footer p {
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+}
+
+/* Responsiveness for footer */
+@media (max-width: 600px) {
+    .footer {
+        padding: 1rem 0;
+        font-size: 0.75rem;
+    }
+}

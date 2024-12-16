@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Concentração de terras no Brasil</title>
+        <link rel="stylesheet" href="static/css/style.css">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.css" rel="stylesheet"/>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v3.8.0/mapbox-gl.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/@turf/turf" defer></script>
+        <script src="//tympanus.net/codrops/adpacks/demoad.js"></script>
+        <script src="https://unpkg.com/scrollama" defer></script>
+        <script src="static\js\script.js" defer></script>
+        <script src="static\js\mapa.js" defer></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <div class="header-intro">
+                    <h1>DESIGUAIS IMENSIDÕES</h1>
+                    <br>
+                    <p class="lide">1% dos estabelecimentos rurais do Brasil possuem mais de mil hectares. Eles ocupam 48% do território do país.</span> 
+                    <p>Você consegue realmente entender essas dimensões?</p>
+                    <p>Por favor, compartilhe o seu endereço (ou um ponto que você deseje usar para iniciar a jornada):</p>
+                    <form id="formularioLocalizacao" class="formulario-custom">
+                        <div class="campo-form">
+                            <input type="text" id="campoEndereco" placeholder="Digite seu endereço..." class="input-endereco">
+                            <div id="mensagemErro" class="mensagem-erro"></div>
+                        </div>
+                        <button type="submit" class="botao-enviar">Enviar</button>
+                    </form>
+                    <div id="mensagemSucesso" class="mensagem-sucesso"></div>
+                    
+                    <p>
+                        Por 
+                        <a href="https://github.com/SumaiaVillela" target="_blank" class="link-autor">Sumaia Villela</a> 
+                    </p>
+
+                    <div class="scroll-indicator">
+                        ↓
+                    </div>
+                </div>
+            </header>
+
+            <main class="scrolly">
+
+                <div class="sticky">
+                        <div id="map"></div>
+                </div>
+
+                <article class="steps">
+
+                    <section class="step" data-secao="1hec" id="narrativa">
+                        <div class="text-box">
+                            <p>Este é um sítio de 1 hectare. Isso quer dizer que ele equivale a 10 mil metros quadrados.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="quadrado">
+                        <div class="text-box">
+                            <p>É um tamanho difícil de mensurar, né? Por isso, vamos usar um quadrado que representa os 10 mil m² de 1 hectare. Propriedades rurais possuem os mais diversos formatos, então padronizamos a área para você entender melhor.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="endereco">
+                        <div class="text-box">
+                            <p>Ok, ainda não está muito claro. Vamos testar colocar o centro da propriedade bem no seu endereço. Também podemos mostrar como coisas com medidas exatas cabem nessa área.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="piscina">
+                        <div class="text-box">
+                            <p>Vamos usar algo com medidas bem rígidas: piscinas olímpicas. Em 1 hectare cabem exatamente 8 piscinas olímpicas. Claro, se a terra fosse um quadrado como o nosso. Caso contrário, o arquiteto precisaria desenhar piscinas bastante arrojadas.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="onibus">
+                        <div class="text-box">
+                            <p>Não sei se você já esteve em uma piscina olímpica. Em um ônibus é muito provável. Num engarrafamento também. Cabem 280 ônibus urbanos comuns em 1 hectare.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="rocinha">
+                        <div class="text-box">
+                            <p>Para áreas maiores, vamos tentar de outra maneira. 50 hectares, por exemplo. Cabe meia Comunidade da Rocinha (RJ) nesse espaço. É a terceira maior favela da capital fluminense.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="grafico1">
+                        <div class="text-box">
+                            <p>Esse é o tamanho máximo de 81% dos estabelecimentos rurais do Brasil, segundo o Censo Agropecuário do IBGE, de 2017.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="grafico2">
+                        <div class="text-box">
+                            <p>Mas ele só ocupam pouco menos de 12% de área explorada do país.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="grafico3">
+                        <div class="text-box">
+                            <p>Já 1% dos estabelecimentos rurais possuem mais de 1 mil hectares, mas ocupam 48% do território nacional. Cabem quase 3 vezes os municípios de Santa Cruz de Minas (MG) ou de Águas de São Pedro (SP).</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="vitoria">
+                        <div class="text-box">
+                            <p>O último grupo medido pelo IBGE é de 10 mil hectares ou mais. São 2,4 mil propriedades rurais a partir de 100 km². 426 municípios brasileiros são menores que isso. Por exemplo, a capital do Espírito Santo, Vitória.</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="maior-terra-uf">
+                        <div class="text-box">
+                            <p>Essa é maior propriedade rural do seu estado. Tem __ hectares e fica em ____. E a escala está precisa. Você consegue notar qual parte da sua cidade foi "engolida" por essa terra?</p>
+                        </div>
+                    </section>
+
+                    <section class="step" data-secao="maior-terra-BR">
+                        <div class="text-box">
+                            <p>Já essa propriedade é a maior do Brasil. Ela fica no Pará, no município de _____, e tem ___ hectares.</p>
+                        </div>
+                    </section>
+
+                </article>
+                
+            </main>
+
+        </div>
+
+        <div class="container-pe">
+
+            <p>
+                Para conseguir a área de todas essas terras, usamos o Cadastro Ambiental Rural (CAR),
+                o sistema obrigatório de registro de propriedades e posses rurais no Brasil.
+                Em muitos casos, esse nem era o maior registro de fato, mas retiramos da lista aqueles com sinais mais óbvios de grilagem:
+                terras com a maior parte de sua área em sobreposição a outras ou que qualquer parte delas esteja inserida em Unidades de Conservação Federais (UCFs) ou terras indígenas.
+                Etapas anteriores de limpeza do dados <a href="https://abraji.org.br/publicacoes/dados-abertos-e-combate-a-crimes-ambientais" style="text-decoration: underline; color: #00796b; transition: color 0.3s;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='#1e293b'">aqui.</a>  
+            </p>
+        
+            <p>
+                Isso porque o CAR é autodeclaratório. Órgãos ambientais estaduais deveriam analisar o registro posteriormente.
+                Menos de 2% das áreas registradas tiveram a conferência concluída até hoje.
+                Então tem grileiro que usa o sistema para "registrar" uma terra que na verdade nunca foi dele.
+            </p>
+
+            <p>
+                O CAR é o que temos de mais aproximado em dados abertos para analisar a questão fundiária brasileira de forma geospacial.
+                Mas não sabemos quem são os donos das terras, porque o sistema não divulga.
+                Um estudo da Associação Brasileira de Jornalistas Investigativos (Abraji),
+                Transparência Internacional-Brasil e o Instituto Centro de Vida (ICV) mediu a transparência de dados abertos para combate a crimes ambientais
+                no Brasil. E uma das recomendações foi a necessidade de melhoria do CAR em vários pontos. Acesse a pesquisa <a href="https://abraji.org.br/publicacoes/dados-abertos-e-combate-a-crimes-ambientais" style="text-decoration: underline; color: #00796b; transition: color 0.3s;" onmouseover="this.style.color='gray'" onmouseout="this.style.color='#1e293b'">aqui.</a>
+            </p>
+        
+        </div>
+
+        <footer class="footer">
+            <p>Esse experimento narrativo foi criado como trabalho final da segunda habilitação do Master em Jornalismo de Dados, Automação e Data Storytelling do Insper | Repositório do site no Github</p>
+            
+            <p>Esse projeto será continuado para análises com base no Cadastro Ambiental Rural (CAR). Se você desenvolve um projeto com o CAR e deseja trocar ideias ou juntar forças, ficarei grata em receber seu contato: dadosparasumaia@gmail.com</p>
+        </footer>
+
+    </body>
+</html>
