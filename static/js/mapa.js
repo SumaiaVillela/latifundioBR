@@ -394,7 +394,7 @@ function getRandomUF() {
 // ========= INICIALIZAÇÃO DO MAPA =========
 
 // Token de acesso do Mapbox
-mapboxgl.accessToken = "sk.eyJ1Ijoic3VtYWlhdmlsbGVsYSIsImEiOiJjbTRxanByeXkxNHpjMmlvcWlqMzU2ZXhiIn0.jf2TXVDAPbGmY9ko7nxrGw";
+mapboxgl.accessToken = "pk.eyJ1Ijoic3VtYWlhdmlsbGVsYSIsImEiOiJjbTBlaTRmamwwcDZ6MmpvOTNvcTAydjN5In0.h_MFiNdtYcgHN5ZforR4mw";
 
 // Cria mapa
 const map = new mapboxgl.Map({
