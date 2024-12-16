@@ -1,7 +1,14 @@
+const CONGRESSO_NACIONAL = {
+    texto: 'Congresso Nacional, Praça dos Três Poderes, Brasília, Distrito Federal',
+    latitude: -15.799228,
+    longitude: -47.864248,
+    estado: 'Distrito Federal'
+};
+
 // Inicia a instância do scrollama
 const scroller = scrollama();
 const camadas = document.querySelectorAll('#camadas img');
-window.enderecoSelecionado = null;
+window.enderecoSelecionado = CONGRESSO_NACIONAL;
 let timeoutBusca;
 
 // Mapeamento de estados para siglas
@@ -331,7 +338,7 @@ function handleStepEnter(response) {
                         
                         const elementoTexto = document.querySelector('[data-secao="maior-terra-uf"] .text-box p');
                         if (elementoTexto) {
-                            elementoTexto.textContent = `Essa é maior propriedade rural do seu estado. Tem ${area} hectares e fica em ${municipio}. E a escala está precisa. Você consegue notar qual parte da sua cidade foi "engolida" por essa terra?`;
+                            elementoTexto.textContent = `Essa é maior propriedade rural do seu estado registrada no Cadastro Ambiental Rural (CAR). Tem ${area} hectares e fica em ${municipio}. E a escala está precisa. Você consegue notar qual parte da sua cidade foi "engolida" por essa terra?`;
                         }
 
                         map.scrollZoom.enable();
@@ -348,7 +355,7 @@ function handleStepEnter(response) {
                     parseFloat(enderecoSelecionado.latitude)
                 ];
                 
-                carregarETransladarGeoJSON('geojson/maiores/maior_Pará.geojson', novoCentro, 'maior-terra-br').then(data => {
+                carregarETransladarGeoJSON('geojson/maiores/maior_Amazonas.geojson', novoCentro, 'maior-terra-br').then(data => {
                     if (data && data.features && data.features[0]) {
                         const bounds = turf.bbox(data);
                         map.fitBounds(bounds, {
@@ -362,7 +369,7 @@ function handleStepEnter(response) {
                         
                         const elementoTexto = document.querySelector('[data-secao="maior-terra-BR"] .text-box p');
                         if (elementoTexto) {
-                            elementoTexto.textContent = `Já essa propriedade é a maior do Brasil. Ela fica no Pará, no município de ${municipio}, e tem ${area} hectares.`;
+                            elementoTexto.textContent = `Já essa propriedade é a maior do Brasil inscrita no CAR. Ela fica no Pará, no município de ${municipio}, e tem ${area} hectares.`;
                         }
 
                         map.scrollZoom.enable();
