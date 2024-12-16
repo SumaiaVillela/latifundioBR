@@ -1,4 +1,4 @@
-// ========= MANTER ESTAS VARIÁVEIS GLOBAIS EXISTENTES =========
+// ========= VARIÁVEIS =========
 const brasil = [-53.2, -10.3333333];
 const centroRocinha = [-43.24402, -22.98863];
 const centroVitoria = [-40.3037, -20.3196];
@@ -7,7 +7,7 @@ const UFS = ['AL', 'MG', 'MT', 'PB', 'PR', 'RJ'];
 let mapLoaded = false;
 let lastUserCenter = null;
 
-// ========= NOVO: OBJETO PARA GERENCIAR CAMADAS =========
+// ========= OBJETO PARA GERENCIAR CAMADAS =========
 const camadasMapa = {
     fontes: {},
     camadas: {},
@@ -40,10 +40,6 @@ const camadasMapa = {
             cor: '#00796b',
             transparencia: 0.6
         });
-
-        //Imagens
-
-        
 
         // Rocinha
         this.adicionarParCamadas('rocinha', {
@@ -197,7 +193,10 @@ const camadasMapa = {
     }
 };
 
-// ========= MANTER ESTAS FUNÇÕES AUXILIARES =========
+// ========= FUNÇÕES AUXILIARES =========
+
+//LIDA COM AS IMAGENS DE PISCINAS E ÔNIBUS
+
 function adicionarImagem(centro, urlImagem, tipo) {
     // Remove fonte e camada existentes se houverem
     if (map.getLayer(`imagem-${tipo}-camada`)) {
@@ -238,6 +237,8 @@ function adicionarImagem(centro, urlImagem, tipo) {
         }
     });
 }
+
+//LIDA COM AS IMAGENS DO GRÁFICO
 
 function adicionarImagemGrafico(tipo, alinhamento = 'centro') {
     if (map.getLayer(`imagem-${tipo}-camada`)) {
@@ -358,6 +359,8 @@ function removerImagem(tipo) {
     }
 }
 
+//CALCULADORAS DOS QUADRADOS
+
 function quadrado(centro, lado) {
     const metade = lado / 2;
     const diagonal = metade * Math.sqrt(2);
@@ -382,18 +385,21 @@ function quadrado500k(centro) {
     return quadrado(centro, 707.1068);
 }
 
+//LIDA COM A ESCOLHA RANDôMICA DO POLÍGONO DO STEP 1
+
 function getRandomUF() {
     return UFS[Math.floor(Math.random() * UFS.length)];
 }
 
-// ========= SUBSTITUIR: INICIALIZAÇÃO DO MAPA =========
-// Define token de acesso do Mapbox
+// ========= INICIALIZAÇÃO DO MAPA =========
+
+// Token de acesso do Mapbox
 mapboxgl.accessToken = "pk.eyJ1Ijoic3VtYWlhdmlsbGVsYSIsImEiOiJjbTBlaTRmamwwcDZ6MmpvOTNvcTAydjN5In0.h_MFiNdtYcgHN5ZforR4mw";
 
 // Cria mapa
 const map = new mapboxgl.Map({
     container: "map",
-    style: "mapbox://styles/sumaiavillela/cm4lwynvr003r01ry9ckb8b29",
+    style: "mapbox://styles/sumaiavillela/cm4qgk44o00be01rya7he7vun",
     center: brasil,
     zoom: 3,
 });
@@ -410,7 +416,8 @@ map.on('load', () => {
     camadasMapa.inicializar();
 });
 
-// ========= SUBSTITUIR: FUNÇÕES DE MANIPULAÇÃO DE CAMADAS =========
+// ========= FUNÇÕES DE MANIPULAÇÃO DE CAMADAS =========
+
 async function loadRandomHectarePolygon() {
     try {
         const uf = getRandomUF();

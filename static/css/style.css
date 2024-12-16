@@ -10,8 +10,8 @@ html {
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #00796b; /* slate-800 */
-    color: #f8fafc; /* slate-50 */
+    background-color: #00796b;
+    color: #f8fafc;
     line-height: 1.6;
     overflow-x: hidden
 }
@@ -34,7 +34,7 @@ body {
 .header-intro {
     max-width: 800px;
     margin: 3rem auto;
-    color: #cbd5e1; /* slate-300 */
+    color: #cbd5e1;
 }
 
 h1 {
@@ -51,13 +51,14 @@ p {
 }
 
 /* Container do formulário */
+
 .formulario-custom {
-    max-width: 800px;  /* Largura máxima do formulário */
-    margin: 20px auto; /* Centraliza na página e dá espaçamento vertical */
-    padding: 0 20px;   /* Padding para não colar nas bordas em telas pequenas */
-    display: flex;     /* Permite alinhar itens na horizontal */
-    gap: 10px;        /* Espaço entre o input e o botão */
-    align-items: flex-start; /* Alinha itens no topo */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
 }
 
 /* Container do campo de endereço */
@@ -70,44 +71,44 @@ p {
 /* Campo de entrada do endereço */
 .input-endereco {
     width: 100%;
-    padding: 10px 15px;  /* Espaçamento interno */
-    border: 2px solid #e0e0e0;  /* Cor da borda - CUSTOMIZÁVEL */
+    padding: 10px 15px;
+    border: 2px solid #e0e0e0;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;  /* Cor de fundo - CUSTOMIZÁVEL */
-    color: #333;             /* Cor do texto - CUSTOMIZÁVEL */
+    background-color: whitesmoke;
+    color: #333;
 }
 
 .input-endereco:focus {
     outline: none;
-    border-color: #2196f3;  /* Cor da borda ao focar - CUSTOMIZÁVEL */
+    border-color: darkgray;
 }
 
-/* Botão de enviar */
 .botao-enviar {
-    padding: 10px 20px;  /* Mesmo padding vertical do input para alinhar */
-    border: none;
+    padding: 10px 15px;
+    border: 2px solid #c39903;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
     white-space: nowrap;  /* Evita quebra de texto */
-    background-color: #c39903;  /* Cor de fundo - CUSTOMIZÁVEL */
-    color: white;            /* Cor do texto - CUSTOMIZÁVEL */
+    background-color: #c39903;
+    color: white;            /* Cor do texto */
     transition: background-color 0.3s;  /* Suaviza a mudança de cor */
 }
 
 .botao-enviar:hover {
-    background-color: #a4a5a5;  /* Cor ao passar o mouse - CUSTOMIZÁVEL */
+    background-color: #a4a5a5;
 }
 
 /* Lista de sugestões */
+
 .sugestoes-endereco {
     position: absolute;
     width: 100%;
     max-height: 200px;
     overflow-y: auto;
-    background: white;          /* Cor de fundo - CUSTOMIZÁVEL */
-    border: 1px solid #ccc;     /* Cor da borda - CUSTOMIZÁVEL */
+    background: white;          
+    border: 1px solid #ccc;
     border-radius: 4px;
     margin-top: 5px;
     padding: 0;
@@ -121,30 +122,31 @@ p {
     cursor: pointer;
     font-size: 14px;
     line-height: 1.4;
-    color: #333;               /* Cor do texto - CUSTOMIZÁVEL */
+    color: #333;
 }
 
 .sugestoes-endereco li:hover {
-    background-color: #f5f5f5;  /* Cor de fundo ao passar mouse - CUSTOMIZÁVEL */
+    background-color: #f5f5f5;
 }
 
 /* Mensagens de erro e sucesso */
 .mensagem-erro {
-    color: rgb(246, 69, 69);            /* Cor do texto de erro - CUSTOMIZÁVEL */
+    color: rgb(240, 135, 135);  
     font-size: 14px;
     margin-top: 5px;
     display: none;
 }
 
 .mensagem-sucesso {
-    color: rgb(113, 251, 168);            /* Cor do texto de sucesso - CUSTOMIZÁVEL */
+    color: rgb(113, 251, 168); 
     font-size: 16px;
     margin-top: 15px;
-    text-align: center;        /* Centraliza a mensagem */
+    text-align: center; 
     display: none;
 }
 
 /* Media query para telas menores */
+
 @media (max-width: 600px) {
     .formulario-custom {
         flex-direction: column;  /* Empilha os elementos em telas pequenas */
@@ -152,7 +154,7 @@ p {
     }
     
     .botao-enviar {
-        width: 100%;            /* Botão ocupa largura total */
+        width: 80%;
     }
 }
 
@@ -179,37 +181,6 @@ p {
     color: #94a3b8; /* slate-400 */
 }
 
-
-/* Controle da imagem */
-.section-image {
-    max-width: auto; /* Tamanho inicial da imagem */
-    height: 12cm; 
-    position: absolute; /* Começa no fluxo normal */
-    top: 140%; /* Inicialmente fora da tela */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: -1;
-    pointer-events: none;
-    transition: top 0.2s ease, opacity 0.2s ease; /* Transição suave para a posição e visibilidade */
-}
-
-.layer-image {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-
-/* Quando a imagem se fixa */
-.section-image.fixed {
-    position: fixed; /* Fixa a imagem no centro da tela */
-    top: 50%;
-}
-
-
 .sticky {
     position: sticky;
     top: 0;
@@ -219,23 +190,12 @@ p {
     align-items: center;
 }
 
-
-.layer-container {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;  /* Maior que o z-index das figures de fundo */
-    pointer-events: none;  /* Permite clicar através das camadas */
-}
-
 .steps {
     position:relative;
 }
 
 /* Seções */
+
 .step {
     display: flex;
     justify-content: center;
@@ -263,34 +223,10 @@ p {
     color: #00796b;
 }
 
-.scroll-section.active .text-box {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.layer1-image {
-    transition: opacity 0.3s ease, top 0.3s ease;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.layer2-image {
-    transition: opacity 0.5s ease;
-    z-index: 0;
-    pointer-events: none;
-}
-
-.form {
-    height: 50vh;
-    width: 100%;
-    position: relative;
-    background-color: whitesmoke;
-}
-
 #map {
     position: absolute;
     inset: 0;
-  }
+}
 
 /* Container principal do texto do rodapé */
 .container-pe {
@@ -313,7 +249,6 @@ p {
     text-align: left;
 }
 
-/* Estilização dos parágrafos */
 .container-pe p {
     margin: 1.5rem 0;
     line-height: 1.8;
@@ -321,6 +256,7 @@ p {
 }
 
 /* Responsividade */
+
 @media (max-width: 768px) {
     .container-pe {
         padding: 3rem 1rem;
@@ -345,13 +281,15 @@ p {
     }
 }
 
+/* pé */
+
 .footer {
     width: 100%;
-    background-color: #00796b; /* Same as body background */
-    color: #f8fafc; /* Same as body text color */
+    background-color: #00796b;
+    color: #f8fafc;
     padding: 2rem 0;
     text-align: center;
-    font-size: 0.875rem; /* Small text */
+    font-size: 0.875rem;
     line-height: 1.6;
 }
 
@@ -361,7 +299,6 @@ p {
     padding: 0 1rem;
 }
 
-/* Responsiveness for footer */
 @media (max-width: 600px) {
     .footer {
         padding: 1rem 0;

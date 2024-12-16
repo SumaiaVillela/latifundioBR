@@ -4,7 +4,7 @@ const camadas = document.querySelectorAll('#camadas img');
 window.enderecoSelecionado = null;
 let timeoutBusca;
 
-// Mapeamento de estados para suas siglas
+// Mapeamento de estados para siglas
 const ESTADOS = {
     'Acre': 'AC', 'Alagoas': 'AL', 'Amapá': 'AP', 'Amazonas': 'AM', 'Bahia': 'BA',
     'Ceará': 'CE', 'Distrito Federal': 'DF', 'Espírito Santo': 'ES', 'Goiás': 'GO',
@@ -15,7 +15,7 @@ const ESTADOS = {
     'Sergipe': 'SE', 'Tocantins': 'TO'
 };
 
-// --------------------------------COMEÇO DA PARTE DO FORMULÁRIO-------------------------------
+// --------------------------------FORMULÁRIO-------------------------------
 
 // Função para limpar e formatar o endereço
 function formatarEndereco(displayName) {
@@ -146,9 +146,7 @@ document.getElementById('formularioLocalizacao').addEventListener('submit', asyn
     }
 });
 
-// ----------------------------FIM DA PARTE DO FORMULÁRIO-----------------------------------
-
-// ----------------------------COMEÇO DA PARTE DO SCROLLY-----------------------------------
+// ----------------------------SCROLLY-----------------------------------
 
 // Função para processar as callbacks do capítulo atual
 function processChapterCallbacks(callbacks) {
@@ -165,7 +163,7 @@ function findChapter(id) {
     return config.chapters.find(chapter => chapter.id === id);
 }
 
-// Setup do scrollama com a nova configuração
+// Setup do scrollama
 function handleStepEnter(response) {
     const secao = response.element.dataset.secao;
     console.log('Entrando na seção:', secao);
